@@ -25,5 +25,5 @@ elem.addEventListener('click', function(){
   		value = value.buffer ? value : new DataView(value);
   		info.innerHTML('Battery percentage is ' + value.getUint8(0));
 	})
-	.catch(error => { console.log(error); });
+	.catch(error => { info.innerHTML(error); });
 });
