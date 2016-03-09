@@ -3,7 +3,7 @@ var elem = document.querySelector('#click');
 elem.addEventListener('click', function(){
 	console.log('clicked!');
 	navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service'] }] })
-	.then(device => { device.connectGATT(); })
+	.then(device => { device.gatt.connect(); })
 	.then(server => { return server.getPrimaryService('battery_service'); })
 	.then(service => { return service.getCharacteristic('battery_level'); })
 	.then(characteristic => { return characteristic.readValue(); })
