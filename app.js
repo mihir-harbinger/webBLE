@@ -1,5 +1,5 @@
-var elem = document.querySelector('#click');
-var info = document.querySelector('#info');
+var elem = document.getElementById('click');
+var info = document.getElementById('info');
 
 elem.addEventListener('click', function(){
 	info.innerHTML('clicked!');
