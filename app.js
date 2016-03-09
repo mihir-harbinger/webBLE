@@ -2,7 +2,7 @@ var elem = document.getElementById('click');
 var info = document.getElementById('info');
 
 elem.addEventListener('click', function(){
-	info.innerHTML('clicked!');
+	document.getElementById('info').innerHTML('clicked!');
 	navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service'] }] })
 	.then(device => device.gatt.connect())
 	.then(server => {
