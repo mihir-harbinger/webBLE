@@ -2,7 +2,7 @@ var elem = document.getElementById('click');
 var info = document.getElementById('info');
 
 elem.addEventListener('click', function(){
-	document.getElementById('info').innerHTML('clicked!');
+	document.getElementById('info').innerHTML='clicked!';
 	navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service'] }] })
 	.then(device => device.gatt.connect())
 	.then(server => {
@@ -23,7 +23,7 @@ elem.addEventListener('click', function(){
 	.then(value => {
   		// In Chrome 50+, a DataView is returned instead of an ArrayBuffer.
   		value = value.buffer ? value : new DataView(value);
-  		info.innerHTML('Battery percentage is ' + value.getUint8(0));
+  		info.innerHTML='Battery percentage is ' + value.getUint8(0);
 	})
-	.catch(error => { info.innerHTML(error); });
+	.catch(error => { info.innerHTML=error; });
 });
