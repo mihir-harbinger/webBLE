@@ -6,15 +6,22 @@ elem.addEventListener('click', function(){
 	navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service'] }] })
 	.then(device => return device.connectGATT())
 	.then(server => {
-  		return server.getPrimaryService('battery_service');
+  		// Getting Battery Service...
+  		return Promise.all([
+  			server.getPrimaryService('battery_service')
+  		])
+		//return server.getPrimaryService('battery_service');
 	})
 	.then(service => {
+  		// Getting Battery Level Characteristic...
   		return service.getCharacteristic('battery_level');
 	})
 	.then(characteristic => {
+  		// Reading Battery Level...
   		return characteristic.readValue();
 	})
 	.then(value => {
+  		// In Chrome 50+, a DataView is returned instead of an ArrayBuffer.
   		value = value.buffer ? value : new DataView(value);
   		info.innerHTML='Battery percentage is ' + value.getUint8(0);
 	})
