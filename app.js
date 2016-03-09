@@ -1,6 +1,7 @@
-var element = document.querySelector('#click');
+var elem = document.querySelector('#click');
 
-element.addEventListener('click', function(){
+elem.addEventListener('click', function(){
+	console.log('clicked!');
 	return navigator.bluetooth.requestDevice({ fliters: [{services:['battery_service']}] })
 	.then(device => { device.connectGATT(); })
 	.then(server => { return server.getPrimaryService('battery_service'); })
