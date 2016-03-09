@@ -3,8 +3,8 @@ var info = document.getElementById('info');
 
 elem.addEventListener('click', function(){
 	document.getElementById('info').innerHTML='clicked!';
-	navigator.bluetooth.requestDevice({filters: [{services: ['battery_service']}]})
-	.then(device => {return device.connectGATT()})
+	navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service'] }] })
+	.then(device => device.connectGATT())
 	.then(server => {
   		// Getting Battery Service...
   		// return Promise.all([
