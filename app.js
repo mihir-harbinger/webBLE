@@ -6,7 +6,10 @@ elem.addEventListener('click', function(){
 	.then(device => device.gatt.connect())
 	.then(server => {
   		// Getting Battery Service...
-		return server.getPrimaryService('battery_service');
+  		return Promise.all([
+  			server.getPrimaryService('battery_service')
+  		])
+		//return server.getPrimaryService('battery_service');
 	})
 	.then(service => {
   		// Getting Battery Level Characteristic...
