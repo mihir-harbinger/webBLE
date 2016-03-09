@@ -3,14 +3,14 @@ var info = document.getElementById('info');
 
 elem.addEventListener('click', function(){
 	document.getElementById('info').innerHTML='clicked!';
-	navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service'] }] })
+	navigator.bluetooth.requestDevice({filters: [{services: ['battery_service']}]})
 	.then(device => return device.connectGATT())
 	.then(server => {
   		// Getting Battery Service...
-  		return Promise.all([
-  			server.getPrimaryService('battery_service')
-  		])
-		//return server.getPrimaryService('battery_service');
+  		// return Promise.all([
+  		// 	server.getPrimaryService('battery_service')
+  		// ])
+		return server.getPrimaryService('battery_service');
 	})
 	.then(service => {
   		// Getting Battery Level Characteristic...
