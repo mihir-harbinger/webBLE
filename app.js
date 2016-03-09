@@ -23,7 +23,7 @@ elem.addEventListener('click', function(){
 	.then(value => {
   		// In Chrome 50+, a DataView is returned instead of an ArrayBuffer.
   		value = value.buffer ? value : new DataView(value);
-  		info.text('Battery percentage is ' + value.getUint8(0));
+  		info.innerHTML('Battery percentage is ' + value.getUint8(0));
 	})
 	.catch(error => { console.log(error); });
 });
